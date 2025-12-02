@@ -37,7 +37,7 @@ public class lifeBar {
         this.maxSize = 20;
         this.caracterBar = '#';                     // atributos-constructors crean una plantilla 
     }
-    public int Attack(int damage){  
+    public int Attack(int damage){    
         currentLife -= damage;
         if(currentLife <= minLife)currentLife = minLife;
         return currentLife;
