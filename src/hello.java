@@ -1,7 +1,7 @@
 public class hello {
     public static void main(String[] args) {
         System.out.println("el delos cuadratdos");
-
+        
         Quadrat q1, q2;
 
         q1 = new Quadrat(3.0);
