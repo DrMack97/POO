@@ -161,5 +161,5 @@ public class estadisticaMetods {
         System.out.println("=".repeat(25));
     }
 
-    //9. 
+    //9.
 }
