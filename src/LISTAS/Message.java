@@ -1,13 +1,11 @@
-package LISTAS;
-
-public class Message {
-    private String sender;
-    private String recibe;
+public class Message{
+    private String sender; 
+    private String reciever;
     private String message;
-    
-    public Message(String sender, String recibe, String message){
+   
+    public Message(String sender, String reciever, String message) {
         this.sender = sender;
-        this.recibe = recibe;
+        this.reciever = reciever;
         this.message = message;
     }
 
@@ -15,16 +13,27 @@ public class Message {
         return sender;
     }
 
-    public String getRecibe() {
-        return recibe;
+    public String getReciever() {
+        return reciever;
     }
 
     public String getMessage() {
         return message;
     }
 
-    @Override
-    public String toString() {
+    public String toString(){
+
         StringBuilder sb = new StringBuilder();
+        sb.append("Sender: ").append(sender);
+        sb.append("\nReciever: ").append(reciever);
+        sb.append("\n").append(message);
+
+        return sb.toString();
+        
     }
+    
+
+    
+
+
 }
