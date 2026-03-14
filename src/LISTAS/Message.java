@@ -1,3 +1,5 @@
+package LISTAS;
+
 public class Message{
     private String sender; 
     private String reciever;

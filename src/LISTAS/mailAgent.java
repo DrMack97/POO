@@ -1,15 +1,16 @@
+package LISTAS;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MailAgent {
+public class mailAgent {
 
     private List<Message> inBox;
     private List<Message> sentBox;
     private List<Message> readBox;
     private int maxMessage;
     
-    public MailAgent() {
+    public mailAgent() {
         maxMessage = 50;
         inBox = new ArrayList<>();
         sentBox = new ArrayList<>();
@@ -36,7 +37,7 @@ public class MailAgent {
 
     /**
      * Donat un missatge l'ha de guardar a la llista de enviats
-     *  
+     *
      */
     public void sendMessage(Message msg){
         if(sentBox.size() < maxMessage){
@@ -71,7 +72,6 @@ public class MailAgent {
 
     }
 
-
     public void printBox(List<Message> listMessages){
 
         for(Message m : listMessages){
@@ -82,7 +82,6 @@ public class MailAgent {
             }
 
             System.out.println("["+m.getSender()+"]: "+showMessage);
-                      
         }
 
     }

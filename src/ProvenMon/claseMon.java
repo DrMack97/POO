@@ -1,3 +1,5 @@
+package ProvenMon;
+
 public class claseMon {
     private String name;
     private int life;

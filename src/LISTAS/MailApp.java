@@ -1,12 +1,14 @@
+package LISTAS;
+
 import java.util.Scanner;
 
 public class MailApp {
 
-    MailAgent ma; 
+    mailAgent ma; 
     Scanner sc; 
 
     public MailApp(){
-        ma = new MailAgent();
+        ma = new mailAgent();
 
         sc = new Scanner(System.in);
 

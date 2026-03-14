@@ -1,3 +1,4 @@
+package ProvenMon;
 import java.util.Scanner;
 
 public class mainMon {
