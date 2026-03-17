@@ -1,15 +1,16 @@
 package LISTAS;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MailApp {
 
-    mailAgent ma; 
+public class MailApp_copy {
+
+    mailAgent_copy ma; 
     Scanner sc; 
 
-    public MailApp(){
-        ma = new mailAgent();
-
+    public MailApp_copy(){
+        ma = new mailAgent_copy();
         sc = new Scanner(System.in);
 
         ma.recieveMessage(new Message("Efrem", "Max", "Hola estic a la oficina avui no podré reunir-me. \nSalut!"));
@@ -29,13 +30,15 @@ public class MailApp {
         do{
 
             showMenu();
-
+            try {
+                
+            
             switch (sc.nextInt()) {
                 case 0:
                     exit = true;
+                    System.out.println("saliendo");
                     break;
                 case 1:
-                    //TODO: Implement show boxes
                     showBoxes();
                     break;
                 case 2:
@@ -51,7 +54,10 @@ public class MailApp {
                     System.out.println("Invalid option...");
                     break;
             }
-
+            } catch (InputMismatchException e) {
+                System.out.println("error");
+                sc.nextLine();
+            }
         }while(!exit);
 
     }
@@ -63,28 +69,36 @@ public class MailApp {
         System.out.println("3- Write and send message");
     }
 
-    public void showBoxes(){
+    public void showBoxes(){    
         //Permetre escriure IN, SENT, READ i mostrar la llista que toca.
         showMenuBoxes();
-        try{
-        switch (sc.nextInt()) {
+
+        int op = sc.nextInt();
+        sc.nextLine();
+        try {
+            
+        
+        switch (op) {
             case 1:
                 ma.showBox(BoxEnum.IN);
                 break;
-            case 2:
+            case 2: 
                 ma.showBox(BoxEnum.SENT);
                 break;
-            case 3:
+            case 3: 
                 ma.showBox(BoxEnum.READ);
                 break;
             case 0:
-                System.out.println("Returning...");
-                break; 
+                System.out.println("returning...");
+        
+            default:
+                System.out.println("error! ");
+                break;
         }
-    }catch(BoxNotFoundException bnfe){
-        System.out.println(bnfe.getMessage());
-    }
 
+        } catch (BoxNotFoundException e) {
+            
+        }
     }
 
     public void showMenuBoxes(){
@@ -98,28 +112,34 @@ public class MailApp {
     public void readInBox(){
         try {
             ma.showBox(BoxEnum.IN);
-
-            System.out.println("Select the message you want to read:");
-            int idMsg = sc.nextInt();
-
-            ma.readMessageInBox(idMsg);
+        
+        
+        System.out.println("que mensaje necesitas leer? ");
+        int indice = sc.nextInt();
+        //metodo readMessage
+        ma.readMessageInBox(indice);
 
         } catch (BoxNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("no existe ");
         }
     }
 
     public void writeAndSend(){
+        System.out.println("a quien desea enviar el mensaje");
 
-        String sender, reciver, msg; 
-        sc.nextLine();
+        String nameReciver = sc.nextLine();
 
-        System.out.println("To: ");        
-        reciver = sc.nextLine();
-        System.out.println("Message: ");
-        msg = sc.nextLine();
+        System.out.println("escribe el mensaje: (max 50)");
 
-        ma.sendMessage(new Message("Efrem", reciver, msg));
-    }   
+        String msg = sc.nextLine();
+
+        Message nMsg = new Message("user", nameReciver, msg);
+
+        ma.sendMessage(nMsg);
+
+        // ma.sendMessage(new Message("user", nameReciver, msg));
+
+    }
 }

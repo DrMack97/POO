@@ -26,7 +26,8 @@ public class Dungeon {
     }
 
     public static void main(String[] args) {
-
+        Dungeon dg = new Dungeon();
+        dg.run();
     }
 
     public void initData() {
